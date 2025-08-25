@@ -1,0 +1,354 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    padding: 30px;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+h1 {
+    color: #333;
+    font-size: 2.2em;
+    margin-bottom: 10px;
+}
+
+header p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.controls {
+    margin-bottom: 30px;
+}
+
+.control-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 15px;
+}
+
+label {
+    font-weight: bold;
+    color: #333;
+}
+
+select {
+    padding: 10px 15px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 16px;
+    background: white;
+    cursor: pointer;
+}
+
+button {
+    padding: 10px 20px;
+    background: #667eea;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background: #5a6fd8;
+}
+
+button:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+.symbols-info {
+    text-align: center;
+    background: #f8f9fa;
+    padding: 10px;
+    border-radius: 8px;
+    color: #666;
+    font-style: italic;
+}
+
+.puzzle-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.grid-container {
+    display: flex;
+    justify-content: center;
+}
+
+.puzzle-grid, .solution-grid {
+    border-collapse: collapse;
+    border: 3px solid #333;
+    background: white;
+    margin: 0 auto;
+}
+
+.puzzle-grid td, .solution-grid td {
+    width: 50px;
+    height: 50px;
+    border: 1px solid #666;
+    text-align: center;
+    vertical-align: middle;
+    position: relative;
+}
+
+.puzzle-grid select {
+    width: 100%;
+    height: 100%;
+    border: none;
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+}
+
+.puzzle-grid select:focus {
+    background: #e3f2fd;
+}
+
+.puzzle-grid select option {
+    font-size: 16px;
+    text-align: center;
+}
+
+.solution-grid td {
+    font-size: 20px;
+    font-weight: bold;
+    background: #f0f8ff;
+}
+
+/* Sudoku-style thick borders */
+.puzzle-grid tr:nth-child(3n) td,
+.solution-grid tr:nth-child(3n) td {
+    border-bottom: 2px solid #333;
+}
+
+.puzzle-grid td:nth-child(3n),
+.solution-grid td:nth-child(3n) {
+    border-right: 2px solid #333;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.action-buttons button {
+    min-width: 120px;
+    padding: 12px 20px;
+    font-size: 16px;
+}
+
+#solvePuzzle {
+    background: #28a745;
+}
+
+#solvePuzzle:hover {
+    background: #218838;
+}
+
+#resetGrid {
+    background: #dc3545;
+}
+
+#resetGrid:hover {
+    background: #c82333;
+}
+
+.solution-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.solution-container h3 {
+    color: #333;
+    margin-bottom: 15px;
+}
+
+.solutions-display {
+    display: none;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+.solutions-display.show {
+    display: flex;
+}
+
+.solution-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 10px;
+    border: 2px solid #dee2e6;
+}
+
+.solution-item h4 {
+    color: #495057;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.solution-grid {
+    border-collapse: collapse;
+    border: 3px solid #333;
+    background: white;
+    margin: 0 auto;
+}
+
+.solution-count {
+    background: #d1ecf1;
+    color: #0c5460;
+    padding: 10px 15px;
+    border-radius: 8px;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.possible-shapes-container {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
+.shape-item {
+    background: #fff3cd;
+    border: 3px solid #856404;
+    border-radius: 15px;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    font-weight: bold;
+    color: #856404;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+}
+
+.shape-item:hover {
+    transform: scale(1.1);
+}
+
+.message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 8px;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+}
+
+.message.success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    display: block;
+}
+
+.message.error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+    display: block;
+}
+
+.message.info {
+    background: #d1ecf1;
+    color: #0c5460;
+    border: 1px solid #bee5eb;
+    display: block;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .container {
+        margin: 10px;
+        padding: 20px;
+    }
+    
+    h1 {
+        font-size: 1.8em;
+    }
+    
+    .control-group {
+        flex-direction: column;
+        gap: 10px;
+    }
+    
+    .puzzle-grid td, .solution-grid td {
+        width: 40px;
+        height: 40px;
+    }
+    
+    .puzzle-grid select {
+        font-size: 16px;
+    }
+    
+    .solution-grid td {
+        font-size: 16px;
+    }
+    
+    .action-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .action-buttons button {
+        width: 200px;
+    }
+}
+
+@media (max-width: 480px) {
+    .puzzle-grid td, .solution-grid td {
+        width: 35px;
+        height: 35px;
+    }
+    
+    .puzzle-grid select {
+        font-size: 14px;
+    }
+    
+    .solution-grid td {
+        font-size: 14px;
+    }
+}
