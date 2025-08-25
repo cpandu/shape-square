@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Latin Square Puzzle Solver</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Latin Square Puzzle Solver</h1>
+            <p>Solve Latin square puzzles with shape symbols</p>
+        </header>
+        
+        <div class="controls">
+            <div class="control-group">
+                <label for="gridSize">Select Grid Size:</label>
+                <select id="gridSize">
+                    <option value="3">3x3 (□, △, +)</option>
+                    <option value="4">4x4 (□, △, +, ○)</option>
+                    <option value="5">5x5 (□, △, +, ○, ★)</option>
+                </select>
+                <button id="generateGrid">Generate Grid</button>
+            </div>
+            
+            <div class="symbols-info" id="symbolsInfo">
+                Select symbols from dropdown menus in each cell ("?" = empty cell)
+            </div>
+        </div>
+        
+        <div class="puzzle-container">
+            <div class="grid-container">
+                <table id="puzzleGrid" class="puzzle-grid"></table>
+            </div>
+            
+            <div class="action-buttons">
+                <button id="solvePuzzle">Solve Puzzle</button>
+                <button id="resetGrid">Reset Grid</button>
+            </div>
+        </div>
+        
+        <div class="solution-container">
+            <h3 id="solutionTitle">Possible Shapes:</h3>
+            <div id="solutionsDisplay" class="solutions-display"></div>
+        </div>
+        
+        <div class="message" id="message"></div>
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>
